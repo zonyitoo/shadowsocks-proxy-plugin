@@ -8,6 +8,7 @@ use std::{
 #[cfg(feature = "mimalloc")]
 use mimalloc::MiMalloc;
 
+use log::trace;
 use opt::ProxyProtocol;
 use shadowsocks::{config::ServerType, context::Context, lookup_then, relay::Address};
 use time::UtcOffset;
@@ -67,6 +68,15 @@ async fn main() -> io::Result<()> {
     if let Ok(opts) = env::var("SS_PLUGIN_OPTIONS") {
         plugin_opts = PluginOpts::from_str(&opts).expect("unrecognized SS_PLUGIN_OPTIONS");
     }
+
+    trace!(
+        "remote_host: {}, remote_port: {}, local_host: {}, local_port: {}",
+        remote_host,
+        remote_port,
+        local_host,
+        local_port
+    );
+    trace!("{:?}", plugin_opts);
 
     let mut context = Context::new(ServerType::Local);
     context.set_ipv6_first(plugin_opts.ipv6_first.unwrap_or(false));

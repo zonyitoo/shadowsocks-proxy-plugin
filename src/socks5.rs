@@ -2,7 +2,7 @@
 
 use std::{io, net::SocketAddr, sync::Arc, time::Duration};
 
-use log::{debug, error, trace};
+use log::{debug, error, info, trace};
 use shadowsocks::{
     context::SharedContext,
     net::{AcceptOpts, ConnectOpts, TcpListener, TcpStream as ShadowTcpStream},
@@ -45,6 +45,11 @@ impl Socks5Server {
         let proxy_addr = Arc::new(self.proxy_addr);
         let remote_addr = Arc::new(self.remote_addr);
         let connect_opts = Arc::new(self.connect_opts);
+
+        info!(
+            "socks5 service started, listening on {}",
+            self.listener.local_addr().unwrap()
+        );
 
         loop {
             let (client_stream, client_addr) = match self.listener.accept().await {
