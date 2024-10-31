@@ -36,7 +36,7 @@ Plugin Options:
 | `outbound_user_cookie` | No | Integer | Set `SO_USER_COOKIE` for outbound sockets |
 | `outbound_bind_interface` | No | String | Set the interface name for outbound sockets to bind with |
 | `outbound_bind_addr` | No | String | Set the address for outbound sockets to `bind()` |
-| `tcp_keep_alive` | No | Boolean | Set to `true` to enable TCP Keep Alive |
+| `tcp_keep_alive` | No | Boolean | Set to `true` to enable `TCP_KEEPALIVE` |
 | `tcp_fast_open` | No | Boolean | Set to `true` to enable TCP Fast Open |
-| `mptcp` | No | Boolean | Set to `true` to enable Multipart-TCP |
+| `mptcp` | No | Boolean | Set to `true` to enable Multipath-TCP |
 | `ipv6_first` | No | Boolean | Set to `true` to enable IPv6 first when resolving `proxy_addr` |
