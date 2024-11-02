@@ -33,4 +33,6 @@ serde_urlencoded = "0.7"
 serde = { version = "1.0", features = ["derive"] }
 httparse = "1.9"
 
-shadowsocks = { git = "https://github.com/shadowsocks/shadowsocks-rust.git" }
+shadowsocks = { git = "https://github.com/shadowsocks/shadowsocks-rust.git", default-features = false, features = [
+    "hickory-dns",
+] }
